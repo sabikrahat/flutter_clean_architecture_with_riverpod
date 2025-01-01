@@ -1,6 +1,6 @@
-import '../../data/models/settings_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../data/models/settings_model.dart';
 import 'settings_provider.dart';
 
 typedef PerformanceOverlayNotifier

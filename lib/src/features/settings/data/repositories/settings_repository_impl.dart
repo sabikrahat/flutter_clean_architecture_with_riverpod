@@ -1,8 +1,7 @@
-import '../../../../injector.dart';
-
 import '../../../../core/config/constants.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/logger/logger_helper.dart';
+import '../../../../injector.dart';
 import '../../domain/repositories/settings_repository.dart';
 import '../models/settings_model.dart';
 import 'hive_box.dart';

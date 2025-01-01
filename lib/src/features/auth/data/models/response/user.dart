@@ -1,27 +1,25 @@
 import 'dart:convert';
 
-import '../../domain/entities/user_entity.dart';
+import '../../../domain/entities/user_entity.dart';
 
 part 'user.ext.dart';
 
 class UserModel extends UserEntity {
   UserModel({
-    required super.userId,
-    required super.createdAt,
-    required super.fullName,
-    required super.role,
-    required super.location,
-    required super.goals,
+    required super.id,
+    required super.email,
+    required super.name,
+    required super.created,
+    required super.updated,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      userId: json[_Json.userId],
-      createdAt: DateTime.parse(json[_Json.createdAt]),
-      fullName: json[_Json.fullName],
-      role: List<String>.from(json[_Json.role]),
-      location: json[_Json.location],
-      goals: List<String>.from(json[_Json.goals]),
+      id: json[_Json.id],
+      email: json[_Json.email],
+      name: json[_Json.name],
+      created: DateTime.parse(json[_Json.created]),
+      updated: DateTime.parse(json[_Json.updated]),
     );
   }
 
@@ -44,18 +42,17 @@ class UserModel extends UserEntity {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is UserModel && other.userId == userId;
+    return other is UserModel && other.id == id;
   }
 
   @override
-  int get hashCode => userId.hashCode;
+  int get hashCode => id.hashCode;
 }
 
 class _Json {
-  static const userId = 'user_id';
-  static const createdAt = 'created_at';
-  static const fullName = 'full_name';
-  static const role = 'role';
-  static const location = 'location';
-  static const goals = 'goals';
+  static const id = 'id';
+  static const email = 'email';
+  static const name = 'name';
+  static const created = 'created';
+  static const updated = 'updated';
 }

@@ -1,16 +1,16 @@
 import 'dart:math';
 
-import '../../../../../core/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/config/get_platform.dart';
-import '../../../../../injector.dart';
-import '../../../../../localization/loalization.dart';
 import '../../../../../core/shared/animations_widget/animated_popup.dart';
 import '../../../../../core/shared/animations_widget/animated_widget_shower.dart';
 import '../../../../../core/shared/k_list_tile.dart/k_list_tile.dart';
 import '../../../../../core/shared/ksnackbar/ksnackbar.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../injector.dart';
+import '../../../../../localization/loalization.dart';
 
 
 class DBViewTile extends StatelessWidget {

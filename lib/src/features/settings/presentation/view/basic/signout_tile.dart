@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import '../../../../auth/presentation/providers/auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../localization/loalization.dart';
-import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/shared/animations_widget/animated_popup.dart';
 import '../../../../../core/shared/animations_widget/animated_widget_shower.dart';
 import '../../../../../core/shared/k_list_tile.dart/k_list_tile.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../localization/loalization.dart';
 
 class SignoutTile extends StatelessWidget {
   const SignoutTile({super.key});
@@ -37,11 +39,11 @@ class SignoutTile extends StatelessWidget {
   }
 }
 
-class SignoutPopup extends StatelessWidget {
+class SignoutPopup extends ConsumerWidget {
   const SignoutPopup({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return AnimatedPopup(
       child: AlertDialog(
         title: const Text('Log out'),
@@ -56,7 +58,8 @@ class SignoutPopup extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () async =>
+                await ref.read(authProvider.notifier).signout(context),
             child: const Text('Confirm', style: TextStyle(color: Colors.red)),
           ),
         ],

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture_template/src/core/config/size.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../config/constants.dart';
+import '../../../config/size.dart';
 import '../../../utils/extensions/extensions.dart';
 import '../provider/internet.dart';
 

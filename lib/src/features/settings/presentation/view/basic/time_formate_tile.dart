@@ -1,14 +1,14 @@
-import '../../../../../core/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../core/config/constants.dart';
-import '../../../../../localization/loalization.dart';
 import '../../../../../core/shared/animations_widget/animated_popup.dart';
 import '../../../../../core/shared/animations_widget/animated_widget_shower.dart';
 import '../../../../../core/shared/k_list_tile.dart/k_list_tile.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../localization/loalization.dart';
 import '../../providers/time_format_provider.dart';
 
 class TimeFormatTile extends StatelessWidget {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture_template/src/core/config/size.dart';
-import 'package:flutter_clean_architecture_template/src/core/utils/extensions/extensions.dart';
-import 'package:flutter_clean_architecture_template/src/features/auth/presentation/providers/auth.dart';
+import '../../../../core/config/size.dart';
+import '../../../../core/utils/extensions/extensions.dart';
+import '../providers/auth.dart';
+import 'signup.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -20,16 +21,15 @@ class AuthView extends ConsumerWidget {
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
             child: Form(
-              key: notifier.formKey,
+              key: notifier.signinFormKey,
               child: Column(
-                spacing: defaultPadding,
                 mainAxisAlignment: mainCenter,
                 children: [
                   Text(
                     "Sign in",
                     style: context.text.headlineSmall,
                   ),
-                  const SizedBox(height: defaultPadding),
+                  const SizedBox(height: defaultPadding * 3),
                   TextFormField(
                     controller: notifier.emailController,
                     decoration: InputDecoration(
@@ -44,9 +44,12 @@ class AuthView extends ConsumerWidget {
                         : !v!.isEmail
                             ? 'Invalid email address'
                             : null,
+                    onTapOutside: (_) =>
+                        FocusManager.instance.primaryFocus?.unfocus(),
                     onFieldSubmitted: (_) async =>
-                        await notifier.submit(context),
+                        await notifier.signin(context),
                   ),
+                  const SizedBox(height: defaultPadding),
                   TextFormField(
                     controller: notifier.passwordController,
                     obscureText: notifier.obscureText,
@@ -66,14 +69,29 @@ class AuthView extends ConsumerWidget {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (v) =>
                         v.isNullOrEmpty ? 'Password is required' : null,
+                    onTapOutside: (_) =>
+                        FocusManager.instance.primaryFocus?.unfocus(),
                     onFieldSubmitted: (_) async =>
-                        await notifier.submit(context),
+                        await notifier.signin(context),
                   ),
-                  const SizedBox(height: defaultPadding / 2),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Forgot password?",
+                        style: context.text.bodyMedium?.copyWith(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: defaultPadding),
                   ElevatedButton(
                     onPressed: notifier.isLoading
                         ? null
-                        : () async => await notifier.submit(context),
+                        : () async => await notifier.signin(context),
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(double.infinity, 48),
                     ),
@@ -83,6 +101,26 @@ class AuthView extends ConsumerWidget {
                             size: 20,
                           )
                         : const Text("Sign in"),
+                  ),
+                  const SizedBox(height: defaultPadding),
+                  TextButton(
+                    onPressed: () async =>
+                        await context.push(const SignupView()),
+                    child: Text.rich(
+                      TextSpan(
+                        text: "Don't have an account? ",
+                        children: [
+                          TextSpan(
+                            text: " Sign Up",
+                            style: context.text.bodyMedium?.copyWith(
+                              color: context.theme.primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      style: context.text.bodyMedium,
+                    ),
                   ),
                 ],
               ),

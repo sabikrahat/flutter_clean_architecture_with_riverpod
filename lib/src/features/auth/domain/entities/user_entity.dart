@@ -1,17 +1,15 @@
 class UserEntity {
-  final String userId;
-  final DateTime createdAt;
-  final String fullName;
-  final List<String> role;
-  final String location;
-  final List<String> goals;
+  final String id;
+  final String name;
+  final String email;
+  final DateTime created;
+  final DateTime updated;
 
   UserEntity({
-    required this.userId,
-    required this.createdAt,
-    required this.fullName,
-    required this.role,
-    required this.location,
-    required this.goals,
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.created,
+    required this.updated,
   });
 }

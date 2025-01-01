@@ -1,62 +1,49 @@
-import 'dart:io';
+import 'package:dartz/dartz.dart';
 
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-import '../../../../injector.dart';
 import '../../domain/repositories/auth_repository.dart';
+import '../models/request/forget_password.dart';
+import '../models/request/signin.dart';
+import '../models/request/signup.dart';
+import '../sources/remote/auth_remote_service.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
+  final AuthRemoteService _authRemoteService;
+
+  AuthRepositoryImpl(this._authRemoteService);
+
   @override
-  Future<void> signin(String email, String password) async {
-    try {
-      await sl<SupabaseClient>()
-          .auth
-          .signInWithPassword(email: email, password: password);
-    } on SocketException catch (e) {
-      throw Exception('No internet connection. $e');
-    } on AuthException catch (e) {
-      throw Exception(e);
-    } catch (e) {
-      return;
-    }
+  Future<Either> signin({required SigninParams params}) async {
+    final response = await _authRemoteService.signin(params: params);
+    return response.fold(
+      (error) => Left(error),
+      (success) => Right(success),
+    );
   }
 
   @override
-  Future<void> signup(String email, String password) async {
-    try {
-      await sl<SupabaseClient>().auth.signUp(email: email, password: password);
-    } on SocketException catch (e) {
-      throw Exception('No internet connection. $e');
-    } on AuthException catch (e) {
-      throw Exception(e);
-    } catch (e) {
-      return;
-    }
+  Future<Either> signup({required SignupParams params}) async {
+    final response = await _authRemoteService.signup(params: params);
+    return response.fold(
+      (error) => Left(error),
+      (success) => Right(success),
+    );
   }
 
   @override
-  Future<void> forgetPassword(String email) async {
-    try {
-      await sl<SupabaseClient>().auth.resetPasswordForEmail(email);
-    } on SocketException catch (e) {
-      throw Exception('No internet connection. $e');
-    } on AuthException catch (e) {
-      throw Exception(e);
-    } catch (e) {
-      return;
-    }
+  Future<Either> forgetPassword({required ForgetPasswordParams params}) async {
+    final response = await _authRemoteService.forgetPassword(params: params);
+    return response.fold(
+      (error) => Left(error),
+      (success) => Right(success),
+    );
   }
 
   @override
-  Future<void> signout() async {
-    try {
-      await sl<SupabaseClient>().auth.signOut();
-    } on SocketException catch (e) {
-      throw Exception('No internet connection. $e');
-    } on AuthException catch (e) {
-      throw Exception(e);
-    } catch (e) {
-      return;
-    }
+  Future<Either> signout() async {
+    final response = await _authRemoteService.signout();
+    return response.fold(
+      (error) => Left(error),
+      (success) => Right(success),
+    );
   }
 }

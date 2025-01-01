@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../localization/loalization.dart';
-import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../../../core/shared/animations_widget/animated_widget_shower.dart';
 import '../../../../../core/shared/k_list_tile.dart/k_list_tile.dart';
+import '../../../../../core/utils/extensions/extensions.dart';
+import '../../../../../localization/loalization.dart';
 import '../../../data/models/theme/theme_model.dart';
 import '../../providers/theme_provider.dart';
 
