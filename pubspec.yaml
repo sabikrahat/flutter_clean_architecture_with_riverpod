@@ -1,0 +1,122 @@
+name: flutter_clean_architecture_template
+description: "A new Flutter project."
+
+# Prevent accidental publishing to pub.dev.
+publish_to: "none"
+
+version: 0.0.1+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  connectivity_plus: ^6.1.1
+  fast_cached_network_image: ^1.2.9
+  flutter:
+    sdk: flutter
+  flutter_dotenv: ^5.2.1
+  flutter_easyloading: ^3.0.5
+  flutter_localizations:
+    sdk: flutter
+  flutter_native_splash: ^2.4.4
+  flutter_riverpod: ^2.6.1
+  flutter_spinkit: ^5.2.1
+  flutter_svg: ^2.0.16
+  get_it: ^8.0.3
+  hive_ce: ^2.8.0+2
+  hive_ce_flutter: ^2.2.0
+  http: ^1.2.2
+  image_cropper: ^8.1.0
+  image_picker: ^1.1.2
+  intl: ^0.19.0
+  logger: ^2.5.0
+  package_info_plus: ^8.1.2
+  path: ^1.9.0
+  path_provider: ^2.1.5
+  permission_handler: ^11.3.1
+  supabase_flutter: ^2.8.2
+
+dev_dependencies:
+  build_runner: ^2.4.14
+  flutter_launcher_icons: ^0.14.1
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+  hive_ce_generator: ^1.8.1
+
+flutter:
+  uses-material-design: true
+
+  # Enable generation of localized Strings from arb files.
+  generate: true
+
+  assets:
+    # Add assets from the images directory to the application.
+    - assets/icons/
+    - assets/images/
+    - assets/svgs/
+    - .env
+
+  fonts:
+    - family: NeueHaasDisplay
+      fonts:
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayBlack.ttf
+          weight: 900
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayBlackItalic.ttf
+          weight: 900
+          style: italic
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayBold.ttf
+          weight: 700
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayBoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayLight.ttf
+          weight: 300
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayLightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayMedium.ttf
+          weight: 500
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayMediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayRoman.ttf
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayRomanItalic.ttf
+          style: italic
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayThin.ttf
+          weight: 100
+        - asset: assets/fonts/neue-hass-grotesk/NeueHaasDisplayThinItalic.ttf
+          weight: 100
+          style: italic
+    - family: IntegralCF
+      fonts:
+        - asset: assets/fonts/integral/IntegralCF-Bold.otf
+          weight: 700
+        - asset: assets/fonts/integral/IntegralCF-BoldOblique.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/integral/IntegralCF-DemiBold.otf
+          weight: 600
+        - asset: assets/fonts/integral/IntegralCF-DemiBoldOblique.otf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/integral/IntegralCF-ExtraBold.otf
+          weight: 800
+        - asset: assets/fonts/integral/IntegralCF-ExtraBoldOblique.otf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/integral/IntegralCF-Heavy.otf
+          weight: 900
+        - asset: assets/fonts/integral/IntegralCF-HeavyOblique.otf
+          weight: 900
+          style: italic
+        - asset: assets/fonts/integral/IntegralCF-Medium.otf
+          weight: 500
+        - asset: assets/fonts/integral/IntegralCF-MediumOblique.otf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/integral/IntegralCF-Regular.otf
+          weight: 400
+        - asset: assets/fonts/integral/IntegralCF-RegularOblique.otf
+          weight: 400
+          style: italic
