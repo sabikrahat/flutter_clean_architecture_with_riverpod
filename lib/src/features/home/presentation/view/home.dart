@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import '../../../../core/router/app_routes.dart';
+import '../../../../core/router/go_router.dart';
 
 import '../../../../core/config/constants.dart';
-import '../../../../core/utils/extensions/extensions.dart';
-import '../../../settings/presentation/view/setting_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
+
+  static const name = 'home';
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class HomeView extends StatelessWidget {
         child: Text(appName),
       ),
       floatingActionButton: FloatingActionButton.small(
-        onPressed: () async => await context.push(const SettingsView()),
+        onPressed: () async => await context.goPush(AppRoutes.settingsRoute),
         child: const Icon(Icons.settings_outlined),
       ),
     );

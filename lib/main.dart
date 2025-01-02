@@ -1,5 +1,6 @@
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'src/core/api_client/api_client.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -32,6 +33,7 @@ Future<void> _init() async {
   await SettingsRepositoryImpl().init();
   await sl<ApiClient>().init();
   await _initFastCachedImageConfig();
+  usePathUrlStrategy();
   FlutterNativeSplash.remove();
 }
 

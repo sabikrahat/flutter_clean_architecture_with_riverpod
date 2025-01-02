@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
@@ -36,20 +37,19 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
         },
         isAuthRequired: false,
       );
-      final apiResponse = ApiResponse.fromRawJson(response);
-      if (!apiResponse.success) throw apiResponse.message;
+      final Map<String, dynamic> apiResponse = json.decode(response);
+      // final apiResponse = ApiResponse.fromRawJson(response);
+      // if (!apiResponse.success) throw apiResponse.message;
       sl<ApiClient>().authStore = AuthStore(
-        userId: apiResponse.data['id'],
-        accessToken: apiResponse.data['tokens']['access-token'],
-        refreshToken: apiResponse.data['tokens']['refresh-token'],
+        userId: apiResponse['id'] ?? 'abc-123-def-456-ghi-789',
+        accessToken: apiResponse['access_token'],
+        refreshToken: apiResponse['refresh_token'],
       );
       await sl<ApiClient>().authStore?.saveData();
       return Right(apiResponse);
     } on SocketException catch (e) {
-      log.e('signin error: No internet connection. $e');
       return Left('No internet connection. $e');
     } catch (e) {
-      log.e('signin error: $e');
       return Left(e);
     }
   }
@@ -77,10 +77,8 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
       await sl<ApiClient>().authStore?.saveData();
       return Right(apiResponse);
     } on SocketException catch (e) {
-      log.e('signup error: No internet connection. $e');
       return Left('No internet connection. $e');
     } catch (e) {
-      log.e('signup error: $e');
       return Left(e);
     }
   }
@@ -92,10 +90,8 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
       log.i('Password reset email sent');
       return Right('Password reset email sent');
     } on SocketException catch (e) {
-      log.e('forgetPassword error: No internet connection. $e');
       return Left('No internet connection. $e');
     } catch (e) {
-      log.e('forgetPassword error: $e');
       return Left(e);
     }
   }
@@ -108,10 +104,8 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
       log.i('Signout successful');
       return Right('Signout successful');
     } on SocketException catch (e) {
-      log.e('signout error: No internet connection. $e');
       return Left('No internet connection. $e');
     } catch (e) {
-      log.e('signout error: $e');
       return Left(e);
     }
   }

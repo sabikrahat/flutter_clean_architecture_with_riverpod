@@ -21,7 +21,6 @@ Future<void> initializeServiceLocator() async {
   sl.registerSingleton<AppSettings>(AppSettings());
   sl.registerSingleton<ApiClient>(ApiClient());
 
-
   //services
   sl.registerSingleton<AuthRemoteService>(AuthRemoteServiceImpl(sl()));
 

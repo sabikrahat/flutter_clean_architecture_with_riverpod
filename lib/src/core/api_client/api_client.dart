@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
+import '../router/go_router.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+
 import '../config/environment.dart';
 import '../../features/settings/data/models/settings_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -41,6 +44,8 @@ class ApiClient {
         .watch(key: appName.toCamelWord)
         .listen((_) => authStore = Boxes.authStores.get(appName.toCamelWord));
   }
+
+  bool get isLoggedIn => authStore != null && authStore!.isAccessTokenValid;
 
   // Future<void> signup({required Map<String, dynamic> data}) async {
   //   final response = await request(
@@ -100,11 +105,11 @@ class ApiClient {
     if (!authStore!.isRefreshTokenValid) {
       log.i('Both token expired.');
       await signout();
-      // globalBeamerKey.currentContext?.beamUpdate(); // TODO: Fix this
-      // KSnackbar.show(
-      //   globalBeamerKey.currentContext!,
-      //   'Session expired. Please sign in again.',
-      // );
+      goRouter.refresh();
+      EasyLoading.showToast(
+        'Session expired. Please sign in again.',
+        toastPosition: EasyLoadingToastPosition.bottom,
+      );
       return null;
     }
     log.i('Token refreshing...');

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../core/config/environment.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/config/environment.dart';
 import '../../../../injector.dart';
 import '../../data/models/settings_model.dart';
 import 'settings_provider.dart';

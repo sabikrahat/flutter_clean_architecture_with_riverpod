@@ -9,6 +9,9 @@ import '../providers/auth.dart';
 
 class SignupView extends ConsumerWidget {
   const SignupView({super.key});
+
+  static const name = 'signup';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(authProvider);
