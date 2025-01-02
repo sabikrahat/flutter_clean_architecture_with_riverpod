@@ -16,6 +16,8 @@ import 'basic/time_formate_tile.dart';
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
 
+  static const name = 'settings';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

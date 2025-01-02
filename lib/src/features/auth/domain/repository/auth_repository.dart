@@ -9,4 +9,5 @@ abstract class AuthRepository {
   Future<Either> signup({required SignupParams params});
   Future<Either> forgetPassword({required ForgetPasswordParams params});
   Future<Either> signout();
+  
 }

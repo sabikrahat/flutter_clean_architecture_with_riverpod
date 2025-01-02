@@ -1,6 +1,6 @@
-import '../../../../core/api_client/model/auth_store.dart';
 import 'package:hive_ce/hive.dart';
 
+import '../../../../core/api_client/model/auth_store.dart';
 import '../models/locale/locale_model.dart';
 import '../models/settings_model.dart';
 import '../models/theme/theme_model.dart';
