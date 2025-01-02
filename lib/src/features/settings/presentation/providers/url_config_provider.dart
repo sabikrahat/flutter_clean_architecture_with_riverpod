@@ -14,7 +14,6 @@ final urlConfigProvider = UrlConfigNotifier(UrlConfigProvider.new);
 class UrlConfigProvider extends AutoDisposeNotifier {
   late AppSettings _currSettings;
   late TextEditingController baseUrlCntrlr;
-  late TextEditingController anonKeyCntrlr;
   late List<String> _baseUrls;
   late List<String> _anonKeys;
   late List<String> _headers;
@@ -25,18 +24,12 @@ class UrlConfigProvider extends AutoDisposeNotifier {
     ref.watch(settingsStreamProvider);
     _currSettings = sl<AppSettings>();
     _baseUrls = [Environment.prodBaseUrl, Environment.devBaseUrl];
-    _anonKeys = [Environment.prodAnonKey, Environment.devAnonKey];
     _headers = ['Production', 'Development'];
     _currUrlIndex = _currSettings.isProduction ? 0 : 1;
     baseUrlCntrlr = TextEditingController(
       text: _currSettings.isProduction
           ? Environment.prodBaseUrl
           : Environment.devBaseUrl,
-    );
-    anonKeyCntrlr = TextEditingController(
-      text: _currSettings.isProduction
-          ? Environment.prodAnonKey
-          : Environment.devAnonKey,
     );
   }
 
@@ -53,7 +46,6 @@ class UrlConfigProvider extends AutoDisposeNotifier {
   void toggleUrl(int? i) {
     if (i == null) return;
     baseUrlCntrlr.text = _baseUrls[i];
-    anonKeyCntrlr.text = _anonKeys[i];
     _currUrlIndex = i;
     _currSettings.isProduction = i == 0;
     ref.notifyListeners();

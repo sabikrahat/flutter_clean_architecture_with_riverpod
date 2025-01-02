@@ -1,9 +1,13 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../../../../core/api_client/api_client.dart';
 
+import '../../../../../core/api_client/enum/method.dart';
+import '../../../../../core/api_client/model/api_response.dart';
+import '../../../../../core/api_client/model/auth_store.dart';
 import '../../../../../core/utils/logger/logger_helper.dart';
+import '../../../../../injector.dart';
 import '../../models/request/forget_password.dart';
 import '../../models/request/signin.dart';
 import '../../models/request/signup.dart';
@@ -16,23 +20,34 @@ abstract class AuthRemoteService {
 }
 
 class AuthRemoteServiceImpl implements AuthRemoteService {
-  final SupabaseClient _supabaseClient;
+  final ApiClient _apiClient;
 
-  AuthRemoteServiceImpl(this._supabaseClient);
+  AuthRemoteServiceImpl(this._apiClient);
 
   @override
   Future<Either> signin({required SigninParams params}) async {
     try {
-      final response = await _supabaseClient.auth
-          .signInWithPassword(email: params.email, password: params.password);
-      log.i('signin response: $response');
-      return Right(response);
+      final response = await _apiClient.request(
+        ApiClientMethod.post,
+        'auth/login',
+        data: {
+          'email': params.email,
+          'password': params.password,
+        },
+        isAuthRequired: false,
+      );
+      final apiResponse = ApiResponse.fromRawJson(response);
+      if (!apiResponse.success) throw apiResponse.message;
+      sl<ApiClient>().authStore = AuthStore(
+        userId: apiResponse.data['id'],
+        accessToken: apiResponse.data['tokens']['access-token'],
+        refreshToken: apiResponse.data['tokens']['refresh-token'],
+      );
+      await sl<ApiClient>().authStore?.saveData();
+      return Right(apiResponse);
     } on SocketException catch (e) {
       log.e('signin error: No internet connection. $e');
       return Left('No internet connection. $e');
-    } on AuthException catch (e) {
-      log.e('signin error: $e');
-      return Left(e);
     } catch (e) {
       log.e('signin error: $e');
       return Left(e);
@@ -42,24 +57,28 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
   @override
   Future<Either> signup({required SignupParams params}) async {
     try {
-      final resposne = await _supabaseClient.auth.signUp(
-        email: params.email,
-        password: params.password,
+      final response = await _apiClient.request(
+        ApiClientMethod.post,
+        'auth/signup',
         data: {
-          'email': params.email,
           'name': params.name,
-          'created': params.created.toUtc().toIso8601String(),
-          'updated': params.updated.toUtc().toIso8601String(),
+          'email': params.email,
+          'password': params.password,
         },
+        isAuthRequired: false,
       );
-      log.i('signup response: $resposne');
-      return Right(resposne);
+      final apiResponse = ApiResponse.fromRawJson(response);
+      if (!apiResponse.success) throw apiResponse.message;
+      sl<ApiClient>().authStore = AuthStore(
+        userId: apiResponse.data['id'],
+        accessToken: apiResponse.data['tokens']['access-token'],
+        refreshToken: apiResponse.data['tokens']['refresh-token'],
+      );
+      await sl<ApiClient>().authStore?.saveData();
+      return Right(apiResponse);
     } on SocketException catch (e) {
       log.e('signup error: No internet connection. $e');
       return Left('No internet connection. $e');
-    } on AuthException catch (e) {
-      log.e('signup error: $e');
-      return Left(e);
     } catch (e) {
       log.e('signup error: $e');
       return Left(e);
@@ -69,15 +88,12 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
   @override
   Future<Either> forgetPassword({required ForgetPasswordParams params}) async {
     try {
-      await _supabaseClient.auth.resetPasswordForEmail(params.email);
+      await Future.delayed(const Duration(seconds: 2));
       log.i('Password reset email sent');
       return Right('Password reset email sent');
     } on SocketException catch (e) {
       log.e('forgetPassword error: No internet connection. $e');
       return Left('No internet connection. $e');
-    } on AuthException catch (e) {
-      log.e('forgetPassword error: $e');
-      return Left(e);
     } catch (e) {
       log.e('forgetPassword error: $e');
       return Left(e);
@@ -87,15 +103,13 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
   @override
   Future<Either> signout() async {
     try {
-      await _supabaseClient.auth.signOut();
+      await sl<ApiClient>().authStore?.deleteData();
+      sl<ApiClient>().authStore = null;
       log.i('Signout successful');
       return Right('Signout successful');
     } on SocketException catch (e) {
       log.e('signout error: No internet connection. $e');
       return Left('No internet connection. $e');
-    } on AuthException catch (e) {
-      log.e('signout error: $e');
-      return Left(e);
     } catch (e) {
       log.e('signout error: $e');
       return Left(e);

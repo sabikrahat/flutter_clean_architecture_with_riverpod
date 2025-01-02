@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../../../core/api_client/api_client.dart';
 
 import '../../../../injector.dart';
 import '../../../home/presentation/view/home.dart';
@@ -10,7 +10,7 @@ class EnteryPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return sl<SupabaseClient>().auth.currentUser == null
+    return sl<ApiClient>().authStore == null
         ? const AuthView()
         : const HomeView();
   }

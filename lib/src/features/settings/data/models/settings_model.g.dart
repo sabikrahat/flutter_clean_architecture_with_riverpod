@@ -24,13 +24,14 @@ class AppSettingsAdapter extends TypeAdapter<AppSettings> {
       ..firstRunDateTime = fields[4] as DateTime
       ..fontFamily = fields[5] as String
       ..theme = fields[6] as ThemeProfile
-      ..locale = fields[7] as LocaleProfile;
+      ..locale = fields[7] as LocaleProfile
+      ..isProduction = fields[8] as bool;
   }
 
   @override
   void write(BinaryWriter writer, AppSettings obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.firstRun)
       ..writeByte(1)
@@ -46,7 +47,9 @@ class AppSettingsAdapter extends TypeAdapter<AppSettings> {
       ..writeByte(6)
       ..write(obj.theme)
       ..writeByte(7)
-      ..write(obj.locale);
+      ..write(obj.locale)
+      ..writeByte(8)
+      ..write(obj.isProduction);
   }
 
   @override

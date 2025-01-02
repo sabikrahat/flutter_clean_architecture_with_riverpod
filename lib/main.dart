@@ -1,5 +1,6 @@
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'src/core/api_client/api_client.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -29,6 +30,7 @@ Future<void> _init() async {
   await initializeServiceLocator();
   await HiveRepositoryImpl().init();
   await SettingsRepositoryImpl().init();
+  await sl<ApiClient>().init();
   await _initFastCachedImageConfig();
   FlutterNativeSplash.remove();
 }

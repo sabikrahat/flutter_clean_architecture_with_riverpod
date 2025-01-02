@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import '../../../../core/shared/ksnackbar/ksnackbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/shared/ksnackbar/ksnackbar.dart';
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../injector.dart';
 import '../../data/models/request/signin.dart';
@@ -75,8 +75,6 @@ class AuthProvider extends Notifier {
         name: nameController.text,
         email: emailController.text,
         password: passwordController.text,
-        created: DateTime.now(),
-        updated: DateTime.now(),
       ),
     );
     response.fold(

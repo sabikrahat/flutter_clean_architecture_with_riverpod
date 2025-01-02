@@ -90,15 +90,6 @@ class URLConfigPopup extends ConsumerWidget {
                   labelText: 'Base URL',
                 ),
               ),
-              const SizedBox(height: 20.0),
-              TextFormField(
-                enabled: false,
-                controller: notifier.anonKeyCntrlr,
-                decoration: const InputDecoration(
-                  labelStyle: TextStyle(fontSize: 10.0),
-                  labelText: 'Anon Key',
-                ),
-              ),
             ],
           ),
         ),
