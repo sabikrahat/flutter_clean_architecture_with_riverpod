@@ -1,4 +1,4 @@
-import 'package:flutter_clean_architecture_template/src/features/home/domain/entity/category_entity.dart';
+import 'category_entity.dart';
 
 class ProductEntity {
   final int id;

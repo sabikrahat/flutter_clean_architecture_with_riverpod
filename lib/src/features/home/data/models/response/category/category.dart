@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_clean_architecture_template/src/features/home/domain/entity/category_entity.dart';
+import '../../../../domain/entity/category_entity.dart';
 
 part 'category.ext.dart';
 

@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter_clean_architecture_template/src/core/api_client/api_client.dart';
-import 'package:flutter_clean_architecture_template/src/core/api_client/enum/method.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/data/models/response/product/product.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/domain/entity/product_entity.dart';
+import '../../../../../core/api_client/api_client.dart';
+import '../../../../../core/api_client/enum/method.dart';
+import '../../models/response/product/product.dart';
+import '../../../domain/entity/product_entity.dart';
 
 abstract class HomeRemoteService {
   Future<Either> getProductData();

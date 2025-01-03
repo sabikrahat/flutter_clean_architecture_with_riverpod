@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/data/sources/remote/home_remote_service.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/domain/entity/product_entity.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/domain/repository/home_repository.dart';
+import '../sources/remote/home_remote_service.dart';
+import '../../domain/entity/product_entity.dart';
+import '../../domain/repository/home_repository.dart';
 
 class HomeRepositoryImpl extends HomeRepository {
   final HomeRemoteService _homeRemoteService;
