@@ -31,10 +31,7 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
       final response = await _apiClient.request(
         ApiClientMethod.post,
         'auth/login',
-        data: {
-          'email': params.email,
-          'password': params.password,
-        },
+        data: params.toJson(),
         isAuthRequired: false,
       );
       final Map<String, dynamic> apiResponse = json.decode(response);
@@ -45,7 +42,7 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
         accessToken: apiResponse['access_token'],
         refreshToken: apiResponse['refresh_token'],
       );
-      await sl<ApiClient>().authStore?.saveData();
+      await _apiClient.authStore?.saveData();
       return Right(apiResponse);
     } on SocketException catch (e) {
       return Left('No internet connection. $e');

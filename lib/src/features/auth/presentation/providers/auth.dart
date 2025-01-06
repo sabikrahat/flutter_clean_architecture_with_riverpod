@@ -38,6 +38,8 @@ class AuthProvider extends Notifier {
     ref.notifyListeners();
   }
 
+  
+
   Future<void> signin(BuildContext context) async {
     if (!(signinFormKey.currentState?.validate() ?? false)) return;
     isLoading = true;

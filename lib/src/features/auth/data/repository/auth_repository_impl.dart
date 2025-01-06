@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../domain/repositories/auth_repository.dart';
+import '../../domain/repository/auth_repository.dart';
 import '../models/request/forget_password.dart';
 import '../models/request/signin.dart';
 import '../models/request/signup.dart';

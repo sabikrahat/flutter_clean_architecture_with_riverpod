@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../repositories/auth_repository.dart';
+import '../repository/auth_repository.dart';
 
 class SignoutUseCase {
   final AuthRepository _authRepository;
