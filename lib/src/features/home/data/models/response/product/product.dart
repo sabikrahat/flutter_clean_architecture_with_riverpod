@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import '../../../../domain/entity/product_entity.dart';
-
 import '../category/category.dart';
 
 part 'product.ext.dart';
