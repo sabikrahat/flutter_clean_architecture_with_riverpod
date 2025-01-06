@@ -1,14 +1,15 @@
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'src/core/api_client/api_client.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_web_plugins/url_strategy.dart'
+    if (dart.library.html) 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'src/app.dart' show App;
+import 'src/core/api_client/api_client.dart';
 import 'src/core/config/environment.dart';
 import 'src/core/config/get_platform.dart';
 import 'src/core/utils/themes/themes.dart';
@@ -33,7 +34,7 @@ Future<void> _init() async {
   await SettingsRepositoryImpl().init();
   await sl<ApiClient>().init();
   await _initFastCachedImageConfig();
-  usePathUrlStrategy();
+  if (sl<PT>().isWeb) setUrlStrategy(PathUrlStrategy());
   FlutterNativeSplash.remove();
 }
 

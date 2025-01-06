@@ -57,16 +57,16 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
-  connectivity_plus: 18382e7311ba19efcaee94442b23b32507b20695
+  connectivity_plus: 2256d3e20624a7749ed21653aafe291a46446fee
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_native_splash: f71420956eb811e6d310720fee915f1d42852e7a
-  image_cropper: 37d40f62177c101ff4c164906d259ea2c3aa70cf
-  image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
-  package_info_plus: c0502532a26c7662a62a356cebe2692ec5fe4ec4
-  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
-  permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
+  flutter_native_splash: 6cad9122ea0fad137d23137dd14b937f3e90b145
+  image_cropper: 5f162dcf988100dc1513f9c6b7eb42cd6fbf9156
+  image_picker_ios: 7fe1ff8e34c1790d6fff70a32484959f563a928a
+  package_info_plus: af8e2ca6888548050f16fa2f1938db7b5a5df499
+  path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
+  permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
   TOCropViewController: 80b8985ad794298fb69d3341de183f33d1853654
-  url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
+  url_launcher_ios: 694010445543906933d732453a59da0a173ae33d
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
 
