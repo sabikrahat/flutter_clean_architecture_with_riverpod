@@ -23,7 +23,7 @@ We welcome contributions from the community to make this template better and mor
 
 - https://www.github.com/sabikrahat > https://theflutterway.com | https://www.skytechbpo.com/ 
 
-- https://github.com/Pritom-Shajed > https://www.skytechbpo.com/
+- https://github.com/Pritom-Shajed > https://impulsion.ae/ | https://www.skytechbpo.com/
 
 - https://github.com/HasanAlHridoy > https://www.skytechbpo.com/
 
