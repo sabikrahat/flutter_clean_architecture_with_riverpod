@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/presentation/view/widgets/create_product_dialog.dart';
+import '../../data/models/response/product/product.dart';
+import 'widgets/create_product_dialog.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/config/size.dart';
@@ -52,7 +53,10 @@ class HomeView extends ConsumerWidget {
                       return ListTile(
                         onTap: () => context.goPush(
                           AppRoutes.productRoute,
-                          extra: product,
+                          extra: ProductModel.fromEntity(product).copyWith(
+                            description:
+                                'Description from home view ${DateTime.now().microsecondsSinceEpoch}',
+                          ),
                         ),
                         title: Text('Title: ${product.title}'),
                         subtitle: Text('Price: ${product.price}'),

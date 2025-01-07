@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/presentation/provider/add_product_provider.dart';
+import '../../provider/add_product_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class NewProductDialog extends ConsumerWidget {

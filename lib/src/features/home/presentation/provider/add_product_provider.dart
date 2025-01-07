@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture_template/src/core/shared/ksnackbar/ksnackbar.dart';
-import 'package:flutter_clean_architecture_template/src/core/utils/extensions/extensions.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/data/models/request/add_product.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/data/models/response/product/product.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/domain/use_case/add_product.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/presentation/provider/home_provider.dart';
-import 'package:flutter_clean_architecture_template/src/injector.dart';
+import '../../../../core/shared/ksnackbar/ksnackbar.dart';
+import '../../../../core/utils/extensions/extensions.dart';
+import '../../data/models/request/add_product.dart';
+import '../../data/models/response/product/product.dart';
+import '../../domain/use_case/add_product.dart';
+import 'home_provider.dart';
+import '../../../../injector.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final addProductProvider =

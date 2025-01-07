@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/domain/entity/product_entity.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/presentation/view/widgets/product.dart';
+import '../../features/home/domain/entity/product_entity.dart';
+import '../../features/home/presentation/view/widgets/product.dart';
 import '../api_client/api_client.dart';
 import '../config/get_platform.dart';
 import '../../features/auth/presentation/view/signin.dart';

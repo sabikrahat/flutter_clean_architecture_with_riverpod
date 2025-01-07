@@ -1,4 +1,4 @@
-import 'package:flutter_clean_architecture_template/src/features/home/domain/use_case/add_product.dart';
+import 'features/home/domain/use_case/add_product.dart';
 
 import 'features/home/data/repository/home_repository_impl.dart';
 import 'features/home/data/sources/remote/home_remote_service.dart';

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/data/models/request/add_product.dart';
+import '../../models/request/add_product.dart';
 import '../../../../../core/api_client/api_client.dart';
 import '../../../../../core/api_client/enum/method.dart';
 import '../../models/response/product/product.dart';

@@ -38,9 +38,6 @@ class CategoryModel extends CategoryEntity {
           [bool sendApi = false]) =>
       list.map((e) => e.toJson()).toList();
 
-  // to raw json
-  String toRawJson() => toRawJson();
-
   // from entity factory
   factory CategoryModel.fromEntity(CategoryEntity entity) {
     return CategoryModel(

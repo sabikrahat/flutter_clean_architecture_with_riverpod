@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_clean_architecture_template/src/core/config/constants.dart';
-import 'package:flutter_clean_architecture_template/src/core/shared/riverpod/helper.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/domain/entity/product_entity.dart';
+import '../../../../../core/config/constants.dart';
+import '../../../../../core/shared/riverpod/helper.dart';
+import '../../../domain/entity/product_entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../provider/product.dart';

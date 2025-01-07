@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_clean_architecture_template/src/features/home/data/models/request/add_product.dart';
+import '../models/request/add_product.dart';
 import '../sources/remote/home_remote_service.dart';
 import '../../domain/entity/product_entity.dart';
 import '../../domain/repository/home_repository.dart';
