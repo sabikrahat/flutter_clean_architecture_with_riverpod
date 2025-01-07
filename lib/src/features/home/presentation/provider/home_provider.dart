@@ -1,12 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter_clean_architecture_template/src/features/home/data/models/response/product/product.dart';
-
-import '../../domain/entity/product_entity.dart';
-import '../../domain/use_case/get_product.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../injector.dart';
+import '../../domain/entity/product_entity.dart';
+import '../../domain/use_case/get_product.dart';
 
 // typedef HomeNotifier = AsyncNotifierProvider<HomeProvider, List<ProductEntity>>;
 
@@ -31,7 +29,7 @@ class HomeProvider extends AsyncNotifier<List<ProductEntity>> {
 
   List<ProductEntity> get products => _products;
 
-  void addProduct(ProductModel product) {
+  void addProduct(ProductEntity product) {
     _products = [product, ..._products];
     ref.notifyListeners();
   }

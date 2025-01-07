@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture_template/src/core/shared/ksnackbar/ksnackbar.dart';
 import 'package:flutter_clean_architecture_template/src/core/utils/extensions/extensions.dart';

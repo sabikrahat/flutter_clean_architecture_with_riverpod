@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture_template/src/features/home/presentation/view/widgets/create_product_dialog.dart';
-import '../../../../core/config/size.dart';
-import '../provider/home_provider.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/config/size.dart';
 import '../../../../core/router/app_routes.dart';
 import '../../../../core/router/go_router.dart';
 import '../../../../core/shared/riverpod/helper.dart';
+import '../provider/home_provider.dart';
 
 class HomeView extends ConsumerWidget {
   const HomeView({super.key});
@@ -51,6 +50,10 @@ class HomeView extends ConsumerWidget {
                     itemBuilder: (context, index) {
                       final product = notifier.products[index];
                       return ListTile(
+                        onTap: () => context.goPush(
+                          AppRoutes.productRoute,
+                          extra: product,
+                        ),
                         title: Text('Title: ${product.title}'),
                         subtitle: Text('Price: ${product.price}'),
                       );

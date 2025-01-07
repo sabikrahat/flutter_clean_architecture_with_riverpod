@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_architecture_template/src/features/home/domain/entity/product_entity.dart';
+import 'package:flutter_clean_architecture_template/src/features/home/presentation/view/widgets/product.dart';
 import '../api_client/api_client.dart';
 import '../config/get_platform.dart';
 import '../../features/auth/presentation/view/signin.dart';
@@ -42,6 +44,14 @@ final GoRouter goRouter = GoRouter(
       name: MaintenanceBreak.name,
       builder: (_, __) => const MaintenanceBreak(),
     ),
+    GoRoute(
+      path: AppRoutes.productRoute,
+      builder: (context, state) {
+        return ProductView(
+          product: state.extra as ProductEntity,
+        );
+      },
+    ),
   ],
   redirect: (context, state) {
     final path = '/${state.fullPath?.split('/').last.toLowerCase()}';
@@ -77,7 +87,7 @@ final GoRouter goRouter = GoRouter(
 );
 
 extension GoRouteExtension on BuildContext {
-  goPush<T>(String route) => sl<PT>().isWeb
-      ? GoRouter.of(this).go(route)
-      : GoRouter.of(this).push(route);
+  goPush<T>(String route, {Object? extra}) => sl<PT>().isWeb
+      ? GoRouter.of(this).go(route, extra: extra)
+      : GoRouter.of(this).push(route, extra: extra);
 }
