@@ -8,8 +8,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../../../core/config/constants.dart';
 
-class AuthView extends ConsumerWidget {
-  const AuthView({super.key});
+class SigninView extends ConsumerWidget {
+  const SigninView({super.key});
+
+  static const name = 'signin';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(authProvider);

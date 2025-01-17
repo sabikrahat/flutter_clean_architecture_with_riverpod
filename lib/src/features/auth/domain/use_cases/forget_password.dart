@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../data/models/request/forget_password.dart';
-import '../repositories/auth_repository.dart';
+import '../repository/auth_repository.dart';
 
 class ForgetPasswordUseCase {
   final AuthRepository _authRepository;

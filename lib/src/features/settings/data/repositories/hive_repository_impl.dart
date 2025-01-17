@@ -14,7 +14,6 @@ import '../models/settings_model.dart';
 import '../models/theme/theme_model.dart';
 import 'hive_box.dart';
 
-
 class HiveRepositoryImpl implements HiveRepository {
   @override
   Future<void> init() async {
@@ -40,10 +39,14 @@ class HiveRepositoryImpl implements HiveRepository {
     sl<AppDir>().db = Directory(join(sl<AppDir>().root.path, 'db'));
     sl<AppDir>().backup = Directory(join(sl<AppDir>().root.path, 'backup'));
     sl<AppDir>().files = Directory(join(sl<AppDir>().root.path, 'files'));
-    if (!sl<AppDir>().root.existsSync()) sl<AppDir>().root.createSync(recursive: true);
-    if (!sl<AppDir>().db.existsSync()) sl<AppDir>().db.createSync(recursive: true);
-    if (!sl<AppDir>().backup.existsSync()) sl<AppDir>().backup.createSync(recursive: true);
-    if (!sl<AppDir>().files.existsSync()) sl<AppDir>().files.createSync(recursive: true);
+    if (!sl<AppDir>().root.existsSync())
+      sl<AppDir>().root.createSync(recursive: true);
+    if (!sl<AppDir>().db.existsSync())
+      sl<AppDir>().db.createSync(recursive: true);
+    if (!sl<AppDir>().backup.existsSync())
+      sl<AppDir>().backup.createSync(recursive: true);
+    if (!sl<AppDir>().files.existsSync())
+      sl<AppDir>().files.createSync(recursive: true);
     log.i('App Directory: ${sl<AppDir>().root.path}');
   }
 

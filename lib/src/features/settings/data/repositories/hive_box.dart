@@ -5,9 +5,12 @@ import '../models/settings_model.dart';
 import '../models/theme/theme_model.dart';
 
 class Boxes {
-  static Box<LocaleProfile> localeProfile = Hive.box<LocaleProfile>(BoxNames.localeProfile);
-  static Box<ThemeProfile> themeProfile = Hive.box<ThemeProfile>(BoxNames.themeProfile);
-  static Box<AppSettings> appSettings = Hive.box<AppSettings>(BoxNames.appSettings);
+  static Box<LocaleProfile> localeProfile =
+      Hive.box<LocaleProfile>(BoxNames.localeProfile);
+  static Box<ThemeProfile> themeProfile =
+      Hive.box<ThemeProfile>(BoxNames.themeProfile);
+  static Box<AppSettings> appSettings =
+      Hive.box<AppSettings>(BoxNames.appSettings);
 }
 
 class BoxNames {

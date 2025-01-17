@@ -1,4 +1,4 @@
-package com.sabikrahat.flutter_clean_architecture_template;
+package com.codezzi.donorconnect;
 
 import io.flutter.embedding.android.FlutterActivity;
 

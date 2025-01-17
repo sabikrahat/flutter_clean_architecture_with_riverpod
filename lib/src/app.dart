@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'core/router/go_router.dart';
+import 'features/home/presentation/view/home.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'
     show AppLocalizations;
@@ -14,7 +16,6 @@ import 'core/utils/extensions/extensions.dart';
 import 'core/utils/logger/logger_helper.dart';
 import 'core/utils/themes/dark/dark.theme.dart';
 import 'core/utils/themes/light/light.theme.dart';
-import 'features/auth/presentation/view/entry_point.dart';
 import 'features/settings/data/models/locale/locale_model.dart';
 import 'features/settings/data/models/theme/theme_model.dart';
 import 'features/settings/presentation/providers/locale_provider.dart';
@@ -29,10 +30,10 @@ class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     configEasyLoading(context);
-    return MaterialApp(
+    return MaterialApp.router(
       title: appName,
       theme: _themeData(context, ref),
-      home: const InternetWidget(child: EnteryPoint()),
+      routerConfig: goRouter,
       onGenerateTitle: onGenerateTitle,
       debugShowCheckedModeBanner: false,
       restorationScopeId: appName.toCamelWord,
@@ -50,7 +51,7 @@ class App extends ConsumerWidget {
             devicePixelRatio: 1.0,
             textScaler: const TextScaler.linear(1.0),
           ),
-          child: InternetWidget(child: child ?? const EnteryPoint()),
+          child: InternetWidget(child: child ?? const HomeView()),
         );
       }),
     );

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import '../../../../core/shared/ksnackbar/ksnackbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/utils/extensions/extensions.dart';
+import '../../../../core/router/go_router.dart';
+import '../../../../core/shared/ksnackbar/ksnackbar.dart';
 import '../../../../injector.dart';
 import '../../data/models/request/signin.dart';
 import '../../data/models/request/signup.dart';
 import '../../domain/use_cases/sign_out.dart';
 import '../../domain/use_cases/signin.dart';
 import '../../domain/use_cases/signup.dart';
-import '../view/entry_point.dart';
 
 typedef AuthNotifier = NotifierProvider<AuthProvider, void>;
 
@@ -29,9 +28,9 @@ class AuthProvider extends Notifier {
 
   @override
   void build() {
-    nameController.text = 'Md. Sabik Alam Rahat';
-    emailController.text = 'sabikrahat72428@gmail.com';
-    passwordController.text = '@Rahat123';
+    nameController.text = 'John Doe';
+    emailController.text = 'john@mail.com';
+    passwordController.text = 'changeme';
   }
 
   void toggleObscureText() {
@@ -59,8 +58,7 @@ class AuthProvider extends Notifier {
       (success) async {
         isLoading = false;
         ref.notifyListeners();
-        if (!context.mounted) return;
-        await context.push(const EnteryPoint());
+        goRouter.refresh();
       },
     );
   }
@@ -88,8 +86,7 @@ class AuthProvider extends Notifier {
       (success) async {
         isLoading = false;
         ref.notifyListeners();
-        if (!context.mounted) return;
-        await context.push(const EnteryPoint());
+        goRouter.refresh();
       },
     );
   }
@@ -106,8 +103,7 @@ class AuthProvider extends Notifier {
     response.fold(
       (error) => KSnackbar.show(context, error.toString(), isError: true),
       (success) async {
-        if (!context.mounted) return;
-        await context.push(const EnteryPoint());
+        goRouter.refresh();
       },
     );
   }

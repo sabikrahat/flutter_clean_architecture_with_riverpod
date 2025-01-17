@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/config/constants.dart';
-import '../../../../core/utils/extensions/extensions.dart';
-import '../../../settings/presentation/view/setting_view.dart';
-
-class HomeView extends StatelessWidget {
+class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
+  static const name = 'home';
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: Center(
-        child: Text(appName),
-      ),
-      floatingActionButton: FloatingActionButton.small(
-        onPressed: () async => await context.push(const SettingsView()),
-        child: const Icon(Icons.settings_outlined),
-      ),
+      body: SafeArea(child: Text('Codezzi Jindabad!')),
     );
   }
 }
